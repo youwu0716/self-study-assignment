@@ -86,7 +86,7 @@ export default function Repairs() {
         <CardContent>
           <Box component="form" onSubmit={handleSubmit}>
             <Grid container spacing={3}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={4}>
                 <FormControl fullWidth>
                   <InputLabel>Maintenance Type</InputLabel>
                   <Select
@@ -103,7 +103,7 @@ export default function Repairs() {
                 </FormControl>
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={8}>
                 <TextField
                   fullWidth
                   label="Location"
@@ -122,8 +122,9 @@ export default function Repairs() {
                   value={formData.description}
                   onChange={handleChange}
                   multiline
-                  rows={4}
+                  rows={6}
                   required
+                  sx={{ '& .MuiOutlinedInput-root': { fontSize: '1rem' } }}
                 />
               </Grid>
 
@@ -149,7 +150,7 @@ export default function Repairs() {
                 />
               </Grid>
 
-              <Grid item xs={12}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
                   label="Preferred Time"

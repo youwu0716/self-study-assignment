@@ -70,26 +70,28 @@ export default function Payments() {
       </Typography>
 
       <TableContainer component={Paper} sx={{ mt: 3 }}>
-        <Table>
+        <Table sx={{ minWidth: 650 }}>
           <TableHead>
             <TableRow>
-              <TableCell>Fee Type</TableCell>
-              <TableCell>Amount (¥)</TableCell>
-              <TableCell>Payment Period</TableCell>
-              <TableCell>Due Date</TableCell>
-              <TableCell>Status</TableCell>
-              <TableCell>Action</TableCell>
+              <TableCell sx={{ width: '20%', fontWeight: 'bold' }}>Fee Type</TableCell>
+              <TableCell align="right" sx={{ width: '15%', fontWeight: 'bold' }}>Amount (¥)</TableCell>
+              <TableCell sx={{ width: '20%', fontWeight: 'bold' }}>Payment Period</TableCell>
+              <TableCell sx={{ width: '15%', fontWeight: 'bold' }}>Due Date</TableCell>
+              <TableCell sx={{ width: '15%', fontWeight: 'bold' }}>Status</TableCell>
+              <TableCell align="center" sx={{ width: '15%', fontWeight: 'bold' }}>Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {mockPayments.map((payment) => (
               <TableRow key={payment.id}>
                 <TableCell>{payment.type}</TableCell>
-                <TableCell>{payment.amount.toFixed(2)}</TableCell>
+                <TableCell align="right">{payment.amount.toFixed(2)}</TableCell>
                 <TableCell>{payment.period}</TableCell>
                 <TableCell>{payment.dueDate}</TableCell>
-                <TableCell>{payment.status}</TableCell>
-                <TableCell>
+                <TableCell sx={{ color: payment.status === 'Paid' ? 'success.main' : 'warning.main' }}>
+                  {payment.status}
+                </TableCell>
+                <TableCell align="center">
                   {payment.status === 'Unpaid' && (
                     <Button
                       variant="contained"
