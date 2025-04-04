@@ -24,12 +24,23 @@ const announcements = [
 ];
 
 export default async function handler(request) {
+  // Add CORS headers
+  const headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type'
+  };
+
+  // Handle OPTIONS request for CORS preflight
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { headers, status: 204 });
+  }
+
   if (request.method !== 'GET') {
     return new Response(JSON.stringify({ error: 'Sorry, this request method is not supported. Please use GET method to access announcements.' }), {
       status: 405,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers
     });
   }
 
